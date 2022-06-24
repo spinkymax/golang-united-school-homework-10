@@ -55,14 +55,14 @@ func handelBad(w http.ResponseWriter, r *http.Request) {
 	}
 
 func handelData(w http.ResponseWriter, r *http.Request) {
-	 	d, err:= io.ReadAll(r.Body)
-		 if err == nil {
-			fmt.Fprintf(w,"I got message:\nPARAM")
-}
+	 d, err := io.ReadAll(r.Body)
+	if err == nil {
+		fmt.Fprintf(w, "I got message:\nPARAM")
+	}
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-	  }
-		w.Write(d)
+		w.WriteHeader(http.StatusBadRequest)
+	}
+	w.Write(d)
 }
 
 func handelHeader(w http.ResponseWriter, r *http.Request) {
