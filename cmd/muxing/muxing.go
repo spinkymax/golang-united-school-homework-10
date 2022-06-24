@@ -56,7 +56,7 @@ func handelBad(w http.ResponseWriter, r *http.Request) {
 
 func handelData(w http.ResponseWriter, r *http.Request) {
 	 	d, err:= io.ReadAll(r.Body)
-		 if err != nil {
+		 if err == nil {
 			fmt.Fprintf(w,"I got message:\nPARAM")
 }
 		w.Write(d)
