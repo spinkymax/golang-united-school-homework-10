@@ -43,7 +43,7 @@ func main() {
 func handleName(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "Hello, %v!", vars["PARAM"])
+	fmt.Fprintf(w, "Hello, %v!", vars["param"])
 	
 }
 
@@ -58,7 +58,7 @@ func handleData(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-		fmt.Fprintf(w, "I got message:\nPARAM", string(d))
+		fmt.Fprintf(w, "I got message:\n"+string(d))
 	}
 
 func handleHeader(w http.ResponseWriter, r *http.Request) {
