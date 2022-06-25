@@ -53,11 +53,12 @@ func handleBad(w http.ResponseWriter, r *http.Request) {
 
 func handleData(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	d, err := io.ReadAll(r.Body)
+	d, err:= io.ReadAll(r.Body)
 	if err != nil {
-		fmt.Fprintln(w, "I got message:\nPARAM", string(d))
+		w.WriteHeader(http.StatusBadRequest)
 	}
-}
+		fmt.Fprintf(w, "I got message:\nPARAM", string(d))
+	}
 
 func handleHeader(w http.ResponseWriter, r *http.Request) {
         a := r.Header.Get("a")
