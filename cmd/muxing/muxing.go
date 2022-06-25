@@ -51,7 +51,7 @@ func handelName(w http.ResponseWriter, r *http.Request) {
 }
 
 func handelBad(w http.ResponseWriter, r *http.Request) {
-		 w.WriteHeader(http.StatusBadGateway)
+		 w.WriteHeader(http.StatusInternalServerError)
 	}
 
 func handelData(w http.ResponseWriter, r *http.Request) {
@@ -60,7 +60,7 @@ func handelData(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "I got message:\nPARAM")
 	}
 	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
+		w.WriteHeader(http.StatusBadRequest)
 	}
 	w.Write(d)
 }
