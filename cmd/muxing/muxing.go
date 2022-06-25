@@ -80,6 +80,6 @@ func handelHeader(w http.ResponseWriter, r *http.Request) {
 	}
 
 	c := strconv.Itoa(aa + bb)
-	w.Header().Add("aa+bb", fmt.Sprint(c))
+	w.Header().Add("a+b", fmt.Sprint(c))
 	w.WriteHeader(http.StatusOK)
 }
