@@ -60,11 +60,26 @@ func handelData(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "I got message:\nPARAM")
 	}
 	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
+		w.WriteHeader(http.StatusInternalServerError)
 	}
 	w.Write(d)
 }
 
 func handelHeader(w http.ResponseWriter, r *http.Request) {
+        a := r.Header.Get("a")
+	b := r.Header.Get("b")
 
+	aa, err := strconv.Atoi(a)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+	}
+
+	bb, err := strconv.Atoi(b)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+	}
+
+	c := strconv.Itoa(aa + bb)
+	w.Header().Add("aa+bb", fmt.Sprint(c))
+	w.WriteHeader(http.StatusOK)
 }
