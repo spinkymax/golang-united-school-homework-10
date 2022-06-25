@@ -56,6 +56,7 @@ func handleData(w http.ResponseWriter, r *http.Request) {
 	d, err:= io.ReadAll(r.Body)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
 		fmt.Fprintf(w, "I got message:\nPARAM", string(d))
 	}
