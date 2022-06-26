@@ -20,7 +20,7 @@ main function reads host/port from env just for an example, flavor it following 
 // Start /** Starts the web server listener on given host and port.
 func Start(host string, port int) {
 	router := mux.NewRouter()
-	router.HandleFunc("/name{PARAM}", handleName).Methods("GET")
+	router.HandleFunc("/name/{PARAM}", handleName).Methods("GET")
 	router.HandleFunc("/bad", handleBad).Methods("GET")
 	router.HandleFunc("/data", handleData).Methods("POST")
 	router.HandleFunc("/headers",  handleHeader).Methods("POST")
@@ -43,7 +43,7 @@ func main() {
 func handleName(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(fmt.Sprintf("Hello, %v!", vars["param"])))
+	 w.Write([]byte(" Hello, " +vars ["PARAM"]+ "!"))
 	
 }
 
