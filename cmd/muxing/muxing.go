@@ -43,7 +43,7 @@ func main() {
 func handleName(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(" Hello, " +vars ["PARAM"]+ "!"))
+	w.Write([]byte(" Hello, " +vars ["param"]+ "!"))
 	
 }
 
